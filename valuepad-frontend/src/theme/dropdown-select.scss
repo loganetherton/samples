@@ -1,0 +1,81 @@
+.select-container {
+  position: absolute;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  top: 65px;
+  background-color: #FFF;
+  z-index: 10;
+  .input-group {
+    margin: 5px;
+  }
+  li {
+    padding: 0;
+    > a {
+      padding: 0;
+      text-decoration: none;
+      > label {
+        margin: 0;
+        height: 100%;
+        cursor: pointer;
+        font-weight: 400;
+        padding: 3px 20px 3px 20px;
+        &.radio {
+          margin: 0;
+        }
+        &.checkbox {
+          margin-left: 10px;
+          padding-left: 10px;
+        }
+        > input[type=checkbox] {
+          margin-bottom: 5px;
+        }
+      }
+      &.multiselect-all label {
+        font-weight: 700;
+      }
+      > input[type=checkbox] {
+        padding: 10px;
+      }
+    }
+    &.select-group label {
+      margin: 0;
+      padding: 3px 20px;
+      height: 100%;
+      font-weight: 700;
+    }
+    &.select-group-clickable label {
+      cursor: pointer;
+    }
+  }
+}
+//Further push down normal select boxes
+.push-down-select {
+  top: 72px;
+}
+.btn-group > .btn-group:nth-child(2) > .multiselect.btn {
+  //Instead of the line below you could use @include border-top-left-radius($radius)
+  border-top-left-radius: 4px;
+  //Instead of the line below you could use @include border-bottom-left-radius($radius)
+  border-bottom-left-radius: 4px;
+}
+.form-inline .select-container {
+  label {
+    &.checkbox {
+      padding: 3px 20px 3px 40px;
+    }
+    &.radio {
+      padding: 3px 20px 3px 40px;
+    }
+  }
+  li a label {
+    &.checkbox input[type=checkbox] {
+      margin-left: -20px;
+      margin-right: 0;
+    }
+    &.radio input[type=radio] {
+      margin-left: -20px;
+      margin-right: 0;
+    }
+  }
+}

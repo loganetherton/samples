@@ -1,0 +1,22 @@
+def verifiedBalance = doc['verifiedBalance'].value ?: -1;
+def claimedBalance = doc['balance'].value ?: 0;
+double actualBalance = verifiedBalance > -1 ? verifiedBalance : claimedBalance;
+def margin = doc['margin'].value ?: 0.03;
+def liquidationSoldFor = doc['liquidationSoldFor'].value ?: 0;
+def rateThisInventory = doc['liquidationRate'].value ?: 0;
+
+if (rateThisInventory <= 0 && claimedBalance > 0) {
+  rateThisInventory = liquidationSoldFor / claimedBalance;
+}
+
+double appPaid = actualBalance * (rateThisInventory - margin);
+
+if (doc['isTransaction'].value) {
+  appPaid = doc['transaction.appPaid'].value;
+}
+
+appPaid = Math.max(appPaid, 0);
+double serviceFee = appPaid * 0.0075;
+
+def appAch = params['_source']['appAch'];
+return appAch != null && ! appAch.isEmpty() ? 0 : appPaid - serviceFee;

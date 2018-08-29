@@ -1,0 +1,77 @@
+{
+    "name": "valuepad/api-service",
+    "description": "The Laravel Framework.",
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "laravel/framework": "5.1.*",
+        "barryvdh/laravel-cors": "^0.7.3",
+        "guzzle/guzzle": "~3.9",
+        "rackspace/php-opencloud": "~1.12",
+        "ascope/shared": "dev-development",
+        "barryvdh/laravel-ide-helper": "^2.0",
+        "aws/aws-sdk-php": "^3.5",
+        "doctrine/orm": "2.5",
+        "doctrine/migrations": "1.1.x",
+        "nelmio/alice": "^2.1",
+        "vlucas/phpdotenv": "~1.0",
+        "fabpot/goutte": "^3.1",
+        "beberlei/DoctrineExtensions": "v1.0.6",
+        "pusher/pusher-php-server": "^2.2",
+        "ext-curl": "*",
+        "authorizenet/authorizenet": "1.8.8",
+        "jms/serializer": "xsd2php-dev as 0.18.0",
+        "sly/notification-pusher": "^2.2",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "itsgoingd/clockwork": "~1.11.1",
+        "maknz/slack": "^1.7",
+        "mews/purifier": "~2.0",
+        "dompdf/dompdf": "^0.7.0"
+
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.5",
+        "phpunit/phpunit": "5.0",
+        "mockery/mockery": "~0.9",
+        "goetas/xsd2php": "dev-master#6a91e0fac75fb83fe35163201717bc5412bee1dc",
+        "goetas/xsd-reader": "2.*@dev"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "ValuePad\\": "app/",
+            "ValuePad\\Tests\\": "tests/",
+            "ValuePad\\Seeding\\": "seeding/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize",
+            "composer dump-autoload"
+        ],
+        "post-update-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize",
+            "composer dump-autoload"
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:ascope/shared-back-end.git"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/goetas/serializer.git"
+        }
+    ]
+}

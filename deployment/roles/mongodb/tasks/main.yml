@@ -1,0 +1,93 @@
+---
+
+- name: Import public key
+  become: true
+  command: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+
+# Need to split this line and the next into two using a variable
+- name: Create sources list file
+  become: true
+  shell: echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.4 multiverse"
+  register: source_list
+
+- name: Create source list for mongodb
+  copy: content="{{ source_list.stdout }}" dest=/etc/apt/sources.list.d/mongodb-3.4.list
+  become: true
+
+- name: Update cache
+  become: true
+  apt: update_cache=yes
+
+- name: Install MongoDB
+  become: true
+  apt: name=mongodb-org
+
+- name: Replace mongo config with development config
+  become: true
+  template: src=etc/mongod-dev.j2 dest=/etc/mongod.conf
+  when: production == false
+  notify:
+    - restart mongodb
+
+- name: Replace mongo config with staging config
+  become: true
+  template: src=etc/mongod-prod.j2 dest=/etc/mongod.conf
+  when: staging == True or production == True
+  notify:
+    - restart mongodb
+
+- name: Start MongoDB
+  become: true
+  service:
+    name: mongod
+    state: started
+
+# Service seems to not be working in some servers
+- name: Upload run_db script
+  copy: src=run_db.sh dest=/home/ubuntu/run_db.sh mode=0777
+
+- name: Make sure DB is always running
+  cron: name="run_db" job="/bin/bash /home/ubuntu/run_db.sh"
+
+# Make backups daily on the primary replica
+- name: Upload daily backup script
+  copy: src=daily_backup.sh dest=/home/ubuntu/daily_backup.sh mode=0777
+  when: primary_node == True
+
+# Make daily error log backups on the primary replica
+# @note: This is run as part of daily_backup.sh
+- name: Upload error log export script
+  copy: src=export_error_log.sh dest=/home/ubuntu/export_error_log.sh mode=0777
+  when: primary_node == True
+
+# Upload backups to s3
+- name: Upload s3 backup script
+  copy: src=s3_backup.js dest=/home/ubuntu/s3_backup.js mode=0777
+  when: primary_node == True
+
+# Package.json for s3
+- name: Upload package.json for s3
+  copy: src=s3_package.json dest=/home/ubuntu/package.json mode=0777
+  when: primary_node == True
+
+# Install npm dependencies for s3
+- name: Install npm packages for s3
+  npm:
+    path: /home/ubuntu/package.json
+  when: primary_node == True
+
+# Create backups
+- name: Make sure daily backups are being made on the primary node
+  cron: name="daily_backup" job="/bin/bash /home/ubuntu/daily_backup.sh" minute="0" hour="3"
+  when: primary_node == True
+
+# Upload backups to s3
+- name: Upload backups to s3
+  cron: name="upload_to_s3" job="/usr/local/bin/node /home/ubuntu/s3_backup.js" minute="0" hour="4"
+  when: primary_node == True
+
+# Logrotate
+- name: Rotate mongodb logs
+  become: true
+  copy: src=logrotate dest=/etc/logrotate.d/mongodb
+

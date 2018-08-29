@@ -1,0 +1,5 @@
+---
+
+- name: Copy logrotate files
+  become: true
+  copy: src=instance dest=/etc/logrotate.d/instance

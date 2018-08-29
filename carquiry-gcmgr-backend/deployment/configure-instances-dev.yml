@@ -1,0 +1,34 @@
+---
+- name: Configure development instances
+  hosts: dev_servers
+  remote_user: ubuntu
+  vars:
+      node_version: "0.10.33"
+      node_version_tag: "v0.10.33"
+      node_prefix: "node-v{{node_version}}"
+      node_tarball: "{{node_prefix}}.tar.gz"
+      node_path: "/usr/local"
+      production: False
+      frontend: True
+      backend: True
+      staging: True
+      db: True
+      api_url: "http://dev.cardquiry.com"
+      local_path: "/home/fad/Workspace/CQ/giftcard_manager"
+      install_path: "/var/www/gcmanager"
+      repo: "git@github.com:loganetherton/gcmgr.git"
+      branch: "kemal/elastic"
+      es_api_basic_auth_username: "cqdev"
+      es_api_basic_auth_password: "**"
+      es_instance_name: "gcmgr-dev"
+      es_scripts: true
+  roles:
+    - system
+    - {role: mongodb, become: true}
+    - node
+    - php
+    - {role: git, become: true}
+    - nginx
+    - app
+    - logrotate
+    - elasticsearch

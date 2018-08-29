@@ -1,0 +1,32 @@
+
+--- GOOD
+
+Hi, Joshua! Thanks so much for reaching out to me.
+
+I took a peak at your resume, and it sounds like you've been around the block a few times. I like that!
+
+In short, you check all the boxes that I'm looking for, so I'd definitely be interested in having a chat with you. After I’ve had these initial interviews with the people I'm interested in, I’m going to take some time to do some pair coding with the people who I like best. Before you whip out your algorithms book, you should know that I’m not going to be asking you to invert binary trees or determine the optimal path through a generated graph or anything like that. What I want to see is that you have applicable skills for the kind of work that we’re going to be doing on a day-to-day basis at CardQuiry. This is going to include some work with Node.js using Express, as well as some Angular and React, with possibly a little Python thrown in there. If you're not super strong on all of the skills that I’m looking for, that’s also not a deal-breaker (assuming you have a strong background in coding and seem like you can pick things up quickly). What I’m looking for is the way you think about coding, how you approach solving problems, and how you implement your solutions. One of my pet peeves is when people are afraid to say “I don’t know.” If you don’t know, that’s perfectly all right. I’m interested to see how you get to the point where you have the knowledge to solve the issue, since problems that you don’t know how to solve are a part of daily life for a programmer.
+
+I'd love it if you could self-select a sample of your code so I can get a good feel of your talents. It would be great to see some frontend and backend JS, or anything else you feel would be great for showcasing your talents!
+
+Also, one of the things that I like to ask of everyone before I move forwards is simple: tell me about a project you've been involved with, personal or professional, that you consider to be your favorite. It can be the same one from the previous paragraph. What excited you about it? What kind of hurdles did you have to overcome?
+
+Thanks once again for taking the time to reach out to me. I’m not going to be a jerk and just ignore you, even if I don’t think you’re the right fit. You’ll be hearing from me shortly either way.
+
+Logan
+
+---- INEXPERIENCED
+
+Hi, Adam! Thanks so much for reaching out to me.
+
+I took a peak at your resume, and it sounds you're on your way towards a promising dev career.
+
+Before going any further, to be clear, I am in need of someone who can jump in to a complicated project with relatively little guidance and be productive. We're talking frontend and backend JS, some understanding of Python, hopefully a bit of server management. Someone who understands the deployment lifecycle and what it takes to craft clever and usable UIs and leave our users feeling satisfied.
+
+Does this sound like something you'd be able to? If so, I'm happy to have a quick chat. It would help me feel get a feel for what you can produce if you could send me some samples which you can convince me of your talent.
+
+So, one of the things that I like to ask of everyone before I move forwards is simple: tell me about a project you've been involved with, personal or professional, that you consider to be your favorite. It can be the same one I talked about above. What excited you about it? What kind of hurdles did you have to overcome?
+
+Thanks once again for taking the time to reach out to me. I’m not going to be a jerk and just ignore you, even if I don’t think you’re the right fit. You’ll be hearing from me shortly either way.
+
+Logan

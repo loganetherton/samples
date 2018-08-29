@@ -1,0 +1,35 @@
+/home/ubuntu/*.log {
+        daily
+        size 100M
+        rotate 2
+        compress
+        delaycompress
+        missingok
+        notifempty
+        copytruncate
+        create 777 ubuntu ubuntu
+}
+
+/home/ubuntu/.pm2/logs/*.log {
+        daily
+        size 100M
+        rotate 2
+        compress
+        delaycompress
+        missingok
+        notifempty
+        copytruncate
+        create 777 ubuntu ubuntu
+}
+
+/tmp/*.log {
+        daily
+        size 10M
+        rotate 2
+        compress
+        delaycompress
+        missingok
+        notifempty
+        copytruncate
+        create 777 ubuntu ubuntu
+}

@@ -1,0 +1,20 @@
+if (doc['activityStatus'].value != null && doc['activityStatus'].value.equals('rejected')) {
+  return 0;
+}
+
+def verifiedBalance = doc['verifiedBalance'].value ?: 0;
+boolean credited = doc['adjustmentStatus'].value != null ? doc['adjustmentStatus'].value.equals('credit') : false;
+boolean denial = doc['adjustmentStatus'].value != null ? doc['adjustmentStatus'].value.equals('denial') : false;
+boolean chargeback = doc['adjustmentStatus'].value != null ? doc['adjustmentStatus'].value.equals('chargeback') : false;
+// Double 0.0 - Amount SMP paid
+def liquidationSoldFor = doc['liquidationSoldFor'].value ?: 0;
+// Double 1.0 - Rate paid by SMP
+def liquidationRate = doc['liquidationRate'].value;
+
+// Update liquidationSoldFor if credit/denial
+if ((credited || denial) && !chargeback) {
+  // Doube 0.0
+  liquidationSoldFor = verifiedBalance * liquidationRate;
+}
+
+return liquidationSoldFor;

@@ -1,0 +1,592 @@
+// Making some spans look like links
+
+html, body {
+  min-width: $screen-lg;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 400;
+  color: #17A1E5 !important;
+
+  &.block {
+    display: block;
+  }
+}
+
+/**
+ * Preview Pane
+ */
+
+.preview-pane {
+  z-index: 1 !important;
+}
+
+/**
+ * Button As Tabs
+ * Such as the ones on order queues on Orders
+ */
+
+.btn-tab-row {
+  margin-bottom: 0;
+}
+
+.btn-tab-col {
+  padding: 0 !important;
+  line-height: 0 !important;
+
+  &:first-child .btn-tab {
+    border-left: 0.08em solid #CCCCCC !important;
+  }
+}
+
+.btn-tab {
+  text-align: left !important;
+  width: 100% !important;
+  color: #4A585D !important;
+  padding: 8px !important;
+  font-weight: normal !important;
+  border-top: 0.08em solid #CCCCCC !important;
+  border-bottom: 0.08em solid #CCCCCC !important;
+  border-right: 0.08em solid #CCCCCC !important;
+  line-height: normal !important;
+
+  &:hover {
+    background: rgba(153, 153, 153, 0.2);
+  }
+}
+
+// Display inset border for active tabs
+.btn-tab-col .btn-tab.btn-tab-active {
+  color: #17A1E5 !important;
+  background: rgba(23, 161, 229, 0.05) !important;
+  border-color: #17A1E5 !important;
+  border-left: 0.08em solid #17A1E5 !important;
+
+  // Increase border size
+  &.large-border {
+    -webkit-box-shadow:inset 0 0 0 2px #17A1E5;
+    -moz-box-shadow:inset 0 0 0 2px #17A1E5;
+    box-shadow:inset 0 0 0 2px #17A1E5;
+  }
+}
+
+.btn-tab-col .btn-tab-before-active {
+  border-right: none !important;
+}
+
+.btn-tab-text {
+  font-size: 20px;
+  color: #17A1E5 !important;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  padding: 8px;
+  display: block;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/**
+ * List Item
+ */
+
+.list-item-active {
+  //width: 98%;
+  background: #509fe9 !important;
+  border: 1px solid #9CD6F3 !important;
+}
+
+.list-item-active:after, .list-item-inactive:hover:after {
+  border-width: 28px;
+  margin-top: -28px;
+}
+
+.list-item-active:before, .list-item-inactive:hover:before {
+  border-width: 30px;
+  margin-top: -30px;
+}
+
+.list-item-active:after {
+  border-color: rgba(110, 213, 72, 0);
+  border-left-color: #F4FBFE;
+}
+
+.list-item-active:before{
+  border-color: rgba(194, 225, 245, 0);
+  border-left-color: #9CD6F3;
+}
+
+.list-item-inactive:hover:after {
+  border-color: rgba(204, 204, 204, 0);
+  border-left-color: #E9E9E9;
+}
+
+.list-item-inactive:hover:before{
+  border-color: rgba(204, 204, 204, 0);
+  border-left-color: #CCCCCC;
+}
+
+// Eliminate flickering that happens when applying the active class
+.list-item-inactive {
+  //width: 98%;
+  border: 1px solid #fff;
+  &:hover {
+    border-color: #CCCCCC !important;
+    background: #f4fbfe !important;
+  }
+}
+
+
+
+.job-type-selector-ul {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+
+    &.list-item-inactive {
+      &:hover {
+        background: #E9E9E9;
+      }
+    }
+
+    span {
+      margin-left: 5px;
+    }
+  }
+}
+
+.orders-action-icon {
+  margin-left: 5px;
+  position: relative;
+  top: 4px;
+  &:hover .material-icons {
+    color: #000000 !important;
+  }
+}
+
+.order-actions-button {
+  margin-right: 10px;
+  .material-icons {
+    position: relative;
+    top: 5px;
+    color: #000000;
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  span {
+    text-transform: uppercase;
+  }
+  &:hover {
+    .material-icons, span {
+      color: #17A1E5 !important;
+    }
+  }
+}
+
+.filter-date-picker {
+  width: 100%;
+  border: none;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.data-table th {
+  font-weight: normal;
+}
+
+.data-table, .data-table tr, .data-table tr td, .data-table tr th {
+  border: 1px solid #CCC;
+}
+
+.data-table th {
+  vertical-align: top;
+}
+
+.data-table td {
+  vertical-align: middle;
+}
+
+.data-table td, .data-table th {
+  padding: 5px;
+}
+
+.data-table tr th:last-child {
+  width: 105px;
+}
+
+.data-table th label {
+  font-weight: bold;
+}
+
+.data-table .control-label {
+  text-transform: uppercase;
+}
+
+.btn-blue {
+  background: #FFFFFF !important;
+  color: #17A1E5 !important;
+  border-radius: 18px;
+  padding: 5px 12px 2px 10px;
+  border: 1px solid #17A1E5 !important;
+  transition: none !important;
+}
+
+.btn-blue:hover {
+  background: rgba(23, 161, 229, 0.07) !important;
+}
+
+.__react_component_tooltip {
+  transition: none !important;
+}
+
+// There's a good reason for placing this here; this for Footer component which is rendered by Html directly
+.footer-links {
+  /* Small devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    text-align: right;
+  }
+}
+
+.select-filter {
+  color: #AAAAAA;
+}
+
+.select-filter.selected {
+  color: #000000;
+}
+
+::-webkit-input-placeholder {
+  color: #AAAAAA;
+  opacity: 1;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #AAAAAA;
+  opacity: 1;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: #AAAAAA;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #AAAAAA;
+  opacity: 1;
+}
+
+.order-details-icon-container {
+  text-transform: uppercase;
+  margin-right: 5px;
+  margin-bottom: 5px;
+
+  i {
+    position: relative;
+    top: 6px;
+    vertical-align: inherit !important;
+  }
+
+  span {
+    margin-left: 4px;
+  }
+}
+
+.instructions-button {
+  color: #FF8619;
+}
+
+.hover-blue {
+  &:hover {
+    color: #17A1E5;
+  }
+}
+
+.hover-red {
+  &:hover {
+    color: #F00000;
+  }
+}
+.details-full-screen {
+  .details-cont {
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+  }
+}
+
+.details-cont {
+  padding: 0;
+  overflow: hidden;
+  .row {
+    padding: 0 15px 0 15px;
+    border-bottom: 1px solid #DDDDDD;
+  }
+
+  .border-right {
+    border-right: 1px solid #DDDDDD;
+  }
+}
+
+.no-border {
+  border: none !important;
+}
+
+.list-group-item-heading {
+  padding: 15px 0;
+
+  span {
+    margin-left: 5px;
+    font-weight: bold;
+    font-family: 'Roboto';
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+}
+
+.submit-btn {
+  background: #17A1E5;
+  color: #FFF;
+  padding: 5px;
+}
+
+.error-display {
+  color: #F00;
+}
+
+.bttn {
+  border: none;
+  border-radius: 3px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  padding: 8px 15px;
+  font-weight: bold;
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &.bttn-submit {
+    background: #17A1E5;
+  }
+
+  &.bttn-cancel {
+    background: #F00000;
+  }
+
+  &.bttn-reset {
+    background: #48555b;
+  }
+
+  &.bttn-disabled {
+    cursor: not-allowed;
+    background: #CCCCCC;
+  }
+
+  .material-icons {
+    font-size: 22px;
+    position: relative;
+    top: -1px;
+    vertical-align: middle !important;
+  }
+}
+
+.main-nav {
+  background: #5F7079;
+  border: 2px solid #5F7079;
+  &:hover {
+    background: none rgba(153, 153, 153, 0.2) !important;
+  }
+}
+
+
+.form-group {
+  margin: 0;
+}
+
+.form-group .help-block {
+  position: relative;
+}
+
+.form-group label.control-label {
+  font-size: 13px !important;
+  opacity: 1 !important;
+  text-transform: uppercase !important;
+  top: 0 !important;
+  line-height: 1.2em !important;
+  margin-top: 10px;
+}
+
+.has-error .help-block {
+  color: #d9534f;
+  margin-top: 5px;
+}
+
+.overflow-visible {
+  overflow: visible !important;
+}
+
+.no-top-spacing {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.signup-heading {
+}
+
+.signup-circles {
+  margin: 0 0 23px 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 5px;
+    cursor: pointer;
+    color: #808080;
+    font-size: 16px;
+
+    .signup-avatar {
+      background-color: #808080;
+    }
+
+    .signup-avatar.disabled {
+      background-color: #AAAAAA;
+    }
+
+    &.active {
+      color: #17A1E5;
+
+      .signup-avatar {
+        background-color: #17A1E5;
+      }
+    }
+
+    &.disabled {
+      cursor: default;
+      color: #AAA !important;
+
+      &:hover .signup-avatar {
+        background: #AAA !important;
+      }
+    }
+
+    &:hover {
+      color: #17A1E5;
+    }
+
+    &:hover .signup-avatar {
+      background: #17A1E5 !important;
+    }
+  }
+}
+
+.under-field {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-top: none;
+  border-bottom: 1px solid #CCC;
+}
+.accounting-datepicker {
+  border: none;
+  height: 28px;
+}
+
+.focusable:focus {
+  border-color: #17A1E5 !important;
+  outline-color: #17A1E5 !important;
+}
+
+.react-datepicker__day-name {
+  width: 14.28%;
+  display: inline-block;
+}
+
+/* do not group these rules */
+*::-webkit-input-placeholder {
+  text-transform: uppercase;
+}
+*:-moz-placeholder {
+  text-transform: uppercase;
+}
+*::-moz-placeholder {
+  text-transform: uppercase;
+}
+*:-ms-input-placeholder {
+  text-transform: uppercase;
+}
+
+.dropzone.realInline {
+  display: inline;
+}
+
+button.btn.btn-raised.btn-success {
+    color: #FFF;
+}
+
+.confirm-dialog img {
+  max-width: 100%;
+}
+
+.required .dropdown-menu label:after {
+  content: '' !important;
+}
+
+#print-window {
+  display: none;
+}
+
+@media print {
+  #app-container {
+    display: none;
+  }
+  #print-window {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #FFFFFF !important;
+    z-index: 2000;
+    padding: 10px 20px;
+  }
+
+  /* Don't print link hrefs */
+  a[href]:after {
+    content: none;
+  }
+
+  .details-pane, .print-preview-dialog, .no-print {
+    display: none;
+  }
+}
+
+// Search appraiser for customer view
+.appraiser-search-row:hover {
+  background-color: #f0f8ff;
+}
+
+.tab-hide-content {
+  display: none;
+}
+
+/*
+green = 33c11d
+purple = 9c0bc4
+ */
+
+@import 'pagination';
+@import 'valuepad-font';
+@import "progressStyles";

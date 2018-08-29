@@ -1,0 +1,3 @@
+def buyAmount = doc['buyAmount'].value ?: 0;
+def appAch = params['_source']['appAch'];
+return appAch != null && ! appAch.isEmpty() ? 0 : buyAmount;

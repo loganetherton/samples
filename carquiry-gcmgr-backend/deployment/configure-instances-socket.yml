@@ -1,0 +1,27 @@
+---
+- name: Configure existing instances
+  hosts: socket_servers
+  remote_user: ubuntu
+  vars:
+      production: true
+      backend: true
+      frontend: false
+      defer: true
+      staging: false
+      db: false
+      local_path: "/public/cardquiry/gcmgr"
+      install_path: "/var/www/gcmanager"
+      repo: "git@github.com:loganetherton/gcmgr.git"
+      branch: "master"
+      primary_node: false
+      env: "NODE_ENV=production SOCKET_SERVER=true WORKER=true"
+      cron: false
+      socket: true
+  roles:
+    - system
+    - {role: mongodb, become: true}
+    - node
+    - {role: git, become: true}
+    - nginx
+    - app
+    - logrotate

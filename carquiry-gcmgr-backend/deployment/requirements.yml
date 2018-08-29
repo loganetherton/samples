@@ -1,0 +1,4 @@
+- name: git
+  src: geerlingguy.git
+- name: elasticsearch
+  src: elastic.elasticsearch

@@ -1,0 +1,3 @@
+def buyAmount = doc['buyAmount'].value ?: 0;
+def cqAch = params['_source']['cqAch'];
+return cqAch != null && ! cqAch.isEmpty() ? 0 : buyAmount;

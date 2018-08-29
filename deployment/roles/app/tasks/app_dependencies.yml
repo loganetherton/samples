@@ -1,0 +1,47 @@
+---
+
+- name: "Change permissions to open (TODO: Change me, don't want these permissions)"
+  shell: chmod -R 0777 .
+  become: true
+  args:
+    chdir: "{{install_path}}"
+
+- name: Install node-gyp
+  become: true
+  npm: name=node-gyp global=yes state=present version=3.2.1
+
+- name: Add pgp key for yarn
+  become: true
+  shell: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+
+- name: Add yarn ppa
+  become: true
+  apt_repository:
+    repo: deb https://dl.yarnpkg.com/debian/ stable main
+    state: present
+
+- name: Install yarn
+  become: true
+  npm: name=yarn global=yes state=present version=0.24.5
+
+- name: Install npm packages
+  shell: yarn install
+  when: backend == True
+  args:
+    chdir: "{{install_path}}"
+
+- name: Install Gulp
+  become: true
+  npm: name=gulp global=yes
+
+- name: Install pm2
+  become: true
+  npm: name=pm2 global=yes
+
+- name: Install ts-node
+  become: true
+  npm: name=ts-node global=yes
+
+- name: Install typescript
+  become: true
+  npm: name=typescript global=yes

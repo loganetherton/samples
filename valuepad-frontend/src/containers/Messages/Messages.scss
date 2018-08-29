@@ -1,0 +1,74 @@
+.header {
+  max-height: 50px;
+}
+
+.divider {
+  max-height: 25px;
+}
+
+.messages-container {
+  max-height: 490px;
+  overflow-y: scroll;
+
+  .messages-total-container {
+    padding-top: 5px;
+
+    .messages-total {
+      border-radius: 15px;
+      font-size: 14px;
+    }
+  }
+
+  .message-divider-container {
+    padding-bottom: 5px;
+  }
+
+  .message-container {
+    border-bottom: 1px solid #DDD;
+
+    .order-link-container {
+      padding-top: 15px;
+      font-weight: 400;
+    }
+
+    .action-button {
+      z-index: 1000;
+    }
+
+    .message-input {
+      width: 100%;
+      border: 1px solid #CCC;
+      padding: 5px;
+      background: white;
+    }
+
+    .reply-actions-container {
+      padding-bottom: 5px;
+    }
+
+    .cancel-reply {
+      margin-left: 5px;
+    }
+
+    .message-sent-container {
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      .message-sent {
+        font-size: 12px;
+        font-weight: none;
+        letter-spacing: 0.03em;
+        padding-top: 0.3em;
+      }
+    }
+  }
+}
+
+.mark-all-as-read-container {
+  max-height: 41px;
+  padding-top: 5px;
+
+  .mark-all-as-read {
+    float: right;
+  }
+}

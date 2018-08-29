@@ -1,0 +1,25 @@
+.logo {
+  background-color: #17A1E5;
+  padding: 2%;
+}
+
+.welcome-message {
+  text-align: center;
+}
+
+.to-do-list {
+  text-align: left;
+}
+
+.main-text {
+  font-weight: bold;
+}
+
+.dont-show-label {
+  width: 100%;
+
+  .dont-show {
+    vertical-align: top;
+    margin-left: 1%;
+  }
+}

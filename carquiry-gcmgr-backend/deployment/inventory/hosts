@@ -1,0 +1,50 @@
+[dev_servers]
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+
+[es_servers]
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+
+[es_servers_private]
+*.*.*.*
+*.*.*.*
+*.*.*.*
+
+[es_servers_private_staging]
+*.*.*.*
+
+[api_servers_master]
+# cron
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+
+# Backend server to run defer script
+[api_servers]
+# 3
+#*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+# 4
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+
+[socket_servers]
+# 1
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+
+[redis_servers]
+# 1
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+
+# GCMGR DB servers
+[db_servers]
+# 1 xfs
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+# 2 xfs
+#*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+
+[db_server_primary]
+# master xfs
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem
+
+# Staging
+[staging_servers]
+# 1
+*.*.*.* ansible_ssh_private_key_file=~/.ssh/gc_mgr.pem

@@ -1,0 +1,8 @@
+{
+  "name": "ValuePad",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery-pjax": "~1.9.6",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37"
+  }
+}

@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'valuepad';
+    src:    url('custom_fonts/valuepad.eot?uw4b76');
+    src:    url('custom_fonts/valuepad.eot?uw4b76#iefix') format('embedded-opentype'),
+        url('custom_fonts/valuepad.ttf?uw4b76') format('truetype'),
+        url('custom_fonts/valuepad.woff?uw4b76') format('woff'),
+        url('custom_fonts/valuepad.svg?uw4b76#valuepad') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+i.valuepad {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'valuepad' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.vp-head-icon {
+    font-size: 32px;
+    color: #FFF;
+    display: block;
+}
+
+.vp-account:before {
+    content: "\1f464";
+}
+.vp-accounting:before {
+    content: "\1f4b2";
+}
+.vp-chat .path1:before {
+    content: "\1f4ac";
+    color: #FFF;
+}
+.vp-chat .path2:before {
+    content: "\1f4ad";
+    margin-left: -1em;
+    color: rgba(255, 255, 255, 0);
+}
+.vp-coverage:before {
+    content: "\1f4f6";
+}
+.vp-help:before {
+    content: "\2049";
+}
+.vp-invitations:before {
+    content: "\2709";
+}
+.vp-jobtype:before {
+    content: "\1f45c";
+}
+.vp-notifications .path1:before {
+    content: "\1f514";
+    color: rgba(255, 255, 255, 0);
+}
+.vp-notifications .path2:before {
+    content: "\1f515";
+    margin-left: -1em;
+    color: rgba(255, 255, 255, 1);
+}
+.vp-orders:before {
+    content: "\1f4c4";
+}
+.vp-schedule:before {
+    content: "\1f5d3";
+}
+.vp-settings:before {
+    content: "\2699";
+}
+.vp-switch-appraiser:before {
+  content: "\1f4ac";
+}

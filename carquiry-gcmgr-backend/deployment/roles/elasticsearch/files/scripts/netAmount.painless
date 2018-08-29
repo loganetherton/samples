@@ -1,0 +1,85 @@
+def defaultServiceFee = 0.0075;
+
+if (doc['isTransaction'].value) {
+  return doc['transaction.netPayout'].value;
+}
+
+if (doc['activityStatus'].value != null && doc['activityStatus'].value.equals('rejected')) {
+  return 0;
+}
+
+def verifiedBalance = doc['verifiedBalance'].value ?: 0;
+def claimedBalance = doc['balance'].value ?: 0;
+// Double 0.0
+def actualBalance = verifiedBalance ?: claimedBalance;
+// Double 0.03 - CQ margin
+def margin = doc['margin'].value ?: 0.03;
+// Double 0.0 - Amount SMP paid
+def liquidationSoldFor = doc['liquidationSoldFor'].value ?: 0;
+boolean credited = doc['adjustmentStatus'].value != null ? doc['adjustmentStatus'].value.equals('credit') : false;
+boolean denial = doc['adjustmentStatus'].value != null ? doc['adjustmentStatus'].value.equals('denial') : false;
+boolean chargeback = doc['adjustmentStatus'].value != null ? doc['adjustmentStatus'].value.equals('chargeback') : false;
+// Double 1.0 - Rate paid by SMP
+def liquidationRate = doc['liquidationRate'].value;
+
+// Update liquidationSoldFor if credit/denial
+if ((credited || denial) && !chargeback) {
+  // Doube 0.0
+  liquidationSoldFor = verifiedBalance * liquidationRate;
+}
+
+// Double 1.0
+def rateThisInventory = liquidationRate ?: 0;
+
+// If rate is falsy and actualBalance is positive
+if (rateThisInventory.equals(0) && actualBalance > 0) {
+  rateThisInventory = liquidationSoldFor / actualBalance;
+}
+
+// Double 0.9
+def rateAfterMargin = rateThisInventory > margin ? rateThisInventory - margin : 0;
+
+// Double 0.0075
+def serviceFee = doc['serviceFee'].value;
+
+// Double 0.0075
+def serviceFeeRate = serviceFee > 0 ? serviceFee : defaultServiceFee;
+
+// Double 0.0
+def cqPaid = 0.0;
+// Double 0.0
+def netAmount = 0.0;
+
+// Get cqPaid for transaction
+if (doc['isTransaction'].value) {
+  cqPaid = doc['transaction.cqPaid'];
+  // inventory.displayMargin = true;
+  // inventory.companyMargin = inventory.serviceFee + inventory.margin;
+  netAmount = doc['transaction.netPayout'];
+// get cqPaid for normal sales
+} else {
+  // Double 0.0
+  cqPaid = actualBalance * rateAfterMargin;
+  // Double 0.0 - This is an error
+  serviceFee = cqPaid * serviceFeeRate;
+  // Double 0.0
+  netAmount = cqPaid - serviceFee;
+}
+
+
+if (chargeback) {
+  cqPaid = claimedBalance * rateAfterMargin;
+  serviceFee = cqPaid * serviceFeeRate;
+  netAmount = serviceFee * -1;
+}
+
+if (denial && actualBalance == 0) {
+  cqPaid = verifiedBalance * rateAfterMargin;
+  // The amount that we would have paid had this been a valid card
+  serviceFee = (claimedBalance * rateAfterMargin) * serviceFeeRate;
+  netAmount = serviceFee * -1;
+}
+
+return netAmount;
+
+

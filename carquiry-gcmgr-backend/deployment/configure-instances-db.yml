@@ -1,0 +1,25 @@
+---
+
+# @Todo I need to use AWS CLI to create a new volume, format at xfs, and mount at /mongodb for this to be automated
+- name: Configure DB instances
+  hosts: db_servers
+  remote_user: ubuntu
+  vars:
+      node_version: "0.10.33"
+      node_version_tag: "v0.10.33"
+      node_prefix: "node-v{{node_version}}"
+      node_tarball: "{{node_prefix}}.tar.gz"
+      node_path: "/usr/local"
+      production: true
+      backend: true
+      frontend: false
+      defer: true
+      staging: false
+      db: true
+      local_path: "/public/cardquiry/gcmgr"
+      install_path: "/var/www/gcmanager"
+      branch: "master"
+      primary_node: false
+  roles:
+    - system
+    - mongodb

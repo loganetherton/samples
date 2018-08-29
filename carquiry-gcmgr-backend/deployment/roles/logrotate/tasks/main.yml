@@ -1,0 +1,5 @@
+---
+
+- name: Copy logrotate files
+  become: true
+  copy: src=gcmgr dest=/etc/logrotate.d/gcmgr

@@ -1,0 +1,15 @@
+---
+- name: Configure Redis servers
+  hosts: redis_servers
+  remote_user: ubuntu
+  vars:
+    redis_version: "stable"
+    redis_logfile: "/var/log/redis/redis.log"
+    redis_slowlog_log_slower_than: 1000
+    redis_maxmemory: 4gb
+    redis_maxmemory_policy: allkeys-lru
+    redis: True
+    db: false
+  roles:
+    - system
+    - {role: redis, become: true}

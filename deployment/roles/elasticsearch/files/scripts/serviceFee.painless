@@ -1,0 +1,20 @@
+if (doc['activityStatus'].value != null && doc['activityStatus'].value.equals('rejected')) {
+  return 0;
+}
+
+if (doc['isTransaction'].value) {
+  return doc['transaction.serviceFee'].value;
+}
+
+def claimedBalance = doc['balance'].value ?: 0;
+def margin = doc['margin'].value ?: 0.03;
+def liquidationSoldFor = doc['liquidationSoldFor'].value ?: 0;
+def rateThisInventory = doc['liquidationRate'].value ?: 0;
+
+if (rateThisInventory <= 0 && claimedBalance > 0) {
+  rateThisInventory = liquidationSoldFor / claimedBalance;
+}
+
+double appPaid = claimedBalance * (rateThisInventory - margin);
+appPaid = Math.max(appPaid, 0);
+return appPaid * 0.0075;

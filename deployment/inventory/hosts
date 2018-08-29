@@ -1,0 +1,34 @@
+[dev_servers]
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+
+[es_servers]
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+
+[api_servers_master]
+# cron
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+
+# Backend server to run defer script
+[api_servers]
+#xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+
+[socket_servers]
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+
+[redis_servers]
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+
+# DB servers
+[db_servers]
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+#xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+
+[db_server_primary]
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem
+
+[staging_servers]
+xx.xx.xx.xx ansible_ssh_private_key_file=~/.ssh/server.pem

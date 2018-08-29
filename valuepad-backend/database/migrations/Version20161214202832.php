@@ -1,0 +1,32 @@
+<?php
+
+namespace ValuePad\Migrations;
+
+use Doctrine\DBAL\Migrations\AbstractMigration;
+use Doctrine\DBAL\Schema\Schema;
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+class Version20161214202832 extends AbstractMigration
+{
+    /**
+     * @param Schema $schema
+     */
+    public function up(Schema $schema)
+    {
+        $this->addSql('
+            ALTER TABLE `company_invitations` ADD COLUMN `requirements` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+        ');
+
+    }
+
+    /**
+     * @param Schema $schema
+     */
+    public function down(Schema $schema)
+    {
+        // this down() migration is auto-generated, please modify it to your needs
+
+    }
+}

@@ -1,0 +1,27 @@
+---
+- name: Configure existing instances
+  hosts: api_servers
+  remote_user: ubuntu
+  vars:
+      production: true
+      backend: true
+      frontend: false
+      defer: true
+      staging: false
+      db: false
+      local_path: "/public/server/instance"
+      install_path: "/var/www/instance"
+      repo: "git@github.com:*/*.git"
+      branch: "master"
+      primary_node: false
+      env: "NODE_ENV=production"
+      cron: false
+      socket: false
+  roles:
+    - system
+    - {role: mongodb, become: true}
+    - node
+    - {role: git, become: true}
+    - nginx
+    - app
+    - logrotate

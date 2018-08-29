@@ -1,0 +1,12 @@
+---
+
+- name: Add node PPA
+  shell: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
+- name: Install node v6
+  apt: pkg=nodejs state=present
+  become: true
+
+- name: Node.js | Update Node
+  become: true
+  shell: npm cache clean -f && npm install -g n && n 9.2.0

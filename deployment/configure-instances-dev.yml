@@ -1,0 +1,34 @@
+---
+- name: Configure development instances
+  hosts: dev_servers
+  remote_user: ubuntu
+  vars:
+      node_version: "0.10.33"
+      node_version_tag: "v0.10.33"
+      node_prefix: "node-v{{node_version}}"
+      node_tarball: "{{node_prefix}}.tar.gz"
+      node_path: "/usr/local"
+      production: False
+      frontend: True
+      backend: True
+      staging: True
+      db: True
+      api_url: "http://dev.server.com"
+      local_path: "/home/fad/Workspace/app"
+      install_path: "/var/www/instance"
+      repo: "git@github.com:*/*.git"
+      branch: "kemal/elastic"
+      es_api_basic_auth_username: "appdev"
+      es_api_basic_auth_password: "fvCuPAALC~@.Fy8G^sb-:R+aftd?mL"
+      es_instance_name: "instance-dev"
+      es_scripts: true
+  roles:
+    - system
+    - {role: mongodb, become: true}
+    - node
+    - php
+    - {role: git, become: true}
+    - nginx
+    - app
+    - logrotate
+    - elasticsearch

@@ -1,0 +1,24 @@
+.app-content {
+  padding: 60px 15px 0; }
+
+/*!
+ * IE10 viewport hack for Surface/desktop Windows 8 bug
+ */
+/*
+ * See the Getting Started docs for more information:
+ * http://getbootstrap.com/getting-started/#support-ie10-width
+ */
+@-webkit-viewport {
+  width: device-width; }
+@-moz-viewport {
+  width: device-width; }
+@-ms-viewport {
+  width: device-width; }
+@-o-viewport {
+  width: device-width; }
+@viewport {
+  width: device-width; }
+:focus {
+  outline: none !important; }
+
+/*# sourceMappingURL=App.css.map */

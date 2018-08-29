@@ -1,0 +1,1 @@
+service php-fpm reload

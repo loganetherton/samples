@@ -1,0 +1,45 @@
+---
+
+- name: Remove apache, if it exists
+  apt: pkg=apache2 state=absent
+  become: true
+
+- name: Gather facts about instance
+  action: ec2_facts
+  register: instance_facts
+
+- name: Upload env.json template
+  copy: src=env.json dest="{{install_path}}/env.json"
+
+- name: Copy .babelrc for compilation
+  copy: src=.babelrc dest={{install_path}}/.babelrc
+
+- name: Build the server
+  shell: npm run build:nolint
+  args:
+    chdir: "{{install_path}}"
+
+- name: Replace server IP
+  replace: dest="{{install_path}}/dist/server/config/environment/index.js" regexp="SERVER_IP" replace="{{instance_facts['ansible_facts']['ansible_ec2_public_ipv4']}}"
+
+- name: Get running pm2 instances
+  shell: pm2 jlist
+  register: pm2_list
+#
+- name: Try to reload pm2
+  shell: pm2 reload all
+  ignore_errors: True
+  register: reload_result
+
+- name: Upload pm2 json file (socket)
+  when: socket == True
+  copy: src=pm2-socket.j2 dest=/var/www/gcmanager/pm2.json
+
+- name: Start pm2 if no instances (socket)
+  shell: '{{env}} pm2 start {{install_path}}/pm2.json'
+  when: reload_result.stderr != "" and socket == True
+
+- name: Start pm2 if no instances
+  shell: '{{env}} pm2 start {{install_path}}/dist/server/app.js -i max --node-args="--stack_size=8192 --max-old-space-size=8192"'
+  when: reload_result.stderr != "" and socket == False
+

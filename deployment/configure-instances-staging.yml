@@ -1,0 +1,50 @@
+---
+- name: Configure existing instances
+  hosts: staging_servers
+  remote_user: ubuntu
+  vars:
+      node_version: "0.10.33"
+      node_version_tag: "v0.10.33"
+      node_prefix: "node-v{{node_version}}"
+      node_tarball: "{{node_prefix}}.tar.gz"
+      node_path: "/usr/local"
+      production: False
+      frontend: False
+      backend: True
+      staging: True
+      db: True
+      api_url: "http://instance-staging.server.com"
+      local_path: "/home/fad/Workspace/app"
+      install_path: "/var/www/instance"
+      repo: "git@github.com:*/*.git"
+      branch: "development"
+      env: "IS_STAGING=true RUN_DEFER=true NODE_ENV=production SOCKET_SERVER=true WORKER=true NO_CALLBACKS=true"
+      primary_node: False
+      cron: true
+      socket: true
+      es_api_basic_auth_username: "instance"
+      es_api_basic_auth_password: "LN2SuWD9S4tDKQSztg2f2Cb3Md5TKHCsXTs4dzg8SYD8VXmHk6"
+      es_instance_name: "instance"
+      es_api_host: "0.0.0.0"
+      es_config: {
+        network.host: "0.0.0.0",
+        transport.tcp.port: 9300
+      }
+      es_scripts: true
+      es_heap_size: 2g
+      redis_version: "stable"
+      redis_logfile: "/var/log/redis/redis.log"
+      redis_slowlog_log_slower_than: 1000
+      redis_maxmemory: 4gb
+      redis_maxmemory_policy: allkeys-lru
+      redis: True
+  roles:
+    - system
+    - {role: mongodb, become: true}
+    - node
+    - {role: git, become: true}
+    - nginx
+    - app
+    - logrotate
+    - elasticsearch
+    - {role: redis, become: true}

@@ -1,0 +1,88 @@
+.input-wrapper {
+  display: inline;
+
+  .filter-input {
+    border: none;
+    width: 95%;
+  }
+
+  .fee-input {
+    width: 100%;
+    border: none;
+  }
+}
+
+.header-label {
+  margin: 0;
+}
+
+.job-type-header-wrapper {
+  position: relative;
+  height: 40px;
+
+  .job-type-header {
+    top: 5px;
+    position: absolute;
+    font-size: 10px;
+  }
+
+  .job-type-filter {
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .clear-job-type-filter {
+    right: 0;
+    position: absolute;
+
+    .clear-filter-icon {
+      cursor: pointer;
+    }
+  }
+}
+
+
+.sort-row {
+  height: 10px;
+  background-color: #f7f7f7;
+
+  .sort-cell {
+    padding: 0;
+    text-align: center;
+
+    .sort-button-wrapper {
+      margin: 0;
+      padding: 0;
+
+      .sort-buttons {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.enable-job-type-cell {
+  cursor: pointer;
+  padding: 0;
+
+  .enable-job-type-label {
+    padding: 5px;
+  }
+}
+
+.apply-state-fees-to-location {
+  margin-left: 10px;
+}
+
+.back-to-state-view {
+  margin-top: 5px;
+}
+
+.job-type-table {
+  width: 100%;
+  margin-top: 10px;
+}

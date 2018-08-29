@@ -1,0 +1,28 @@
+---
+
+- name: Clone rejson
+  git: repo=git@github.com:RedisLabsModules/rejson.git dest=/home/ubuntu/rejson accept_hostkey=yes force=yes
+
+- name: Compile rejson
+  command: make
+  args:
+    chdir: /home/ubuntu/rejson
+    creates: make
+
+- name: Make rejson accessible by redis
+  file:
+    path: /home/ubuntu/rejson
+    owner: redis
+    group: redis
+    recurse: yes
+  become: true
+
+- name: Move rejson to / so it's accessible by redis
+  shell: sudo cp -a /home/ubuntu/rejson /
+
+- name: Remove original rejson
+  file:
+    path: /home/ubuntu/rejson
+    state: absent
+
+

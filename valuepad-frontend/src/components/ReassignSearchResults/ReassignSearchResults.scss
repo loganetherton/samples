@@ -1,0 +1,109 @@
+.results {
+  $color_black_haze_approx: #f7f7f7;
+  $color_cape_cod_approx: #404040;
+  $color_mariner_approx: #1e7ad3;
+  $color_scarpa_flow_approx: #555860;
+  $white: white;
+  $color_spun_pearl_approx: #a8acbc;
+  $color_french_gray_approx: #babdcc;
+  $color_gray_suit_approx: #c0c3d2;
+  $color_mystic_approx: #e5e7ed;
+  $color_alabaster_approx: #fcfcfc;
+  $color_cornflower_blue_approx: #66b1ee;
+  $color_picton_blue_90_approx: rgba(85, 168, 236, 0.9);
+  $color_mischka_approx: #cbcfe2;
+  $color_periwinkle_gray_approx: #c8cee7;
+  $color_ghost_approx: #c4c7d7;
+  $color_romance_approx: #fdfdfd;
+  $color_athens_gray_approx: #eceef4;
+  $black_10: rgba(0, 0, 0, 0.1);
+  $color_waterloo__approx: #808394;
+  $black_30: rgba(0, 0, 0, 0.3);
+  $color_curious_blue_approx: #2380dd;
+  $color_fun_blue_approx: #1a60aa;
+  $color_picton_blue_approx: #59aaf4;
+  $white_20: rgba(255, 255, 255, 0.2);
+  $black_8: rgba(0, 0, 0, 0.08);
+
+  //fonts
+  $font_0: HelveticaNeue;
+  $font_1: Helvetica Neue;
+  $font_2: Helvetica;
+  $font_3: Arial;
+  $font_4: sans-serif;
+
+  //overflow: scroll;
+  //overflow-x: hidden;
+  overflow: hidden;
+  //max-height: 11em;
+
+  position: absolute;
+  //top: 65px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 0;
+  margin: 0 0 15px 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color_mischka_approx $color_periwinkle_gray_approx $color_ghost_approx;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 3px;
+  background-color: $color_romance_approx;
+  background-image: linear-gradient(top, $color_romance_approx, $color_athens_gray_approx);
+
+  li {
+    display: block;
+    &:first-child {
+      margin-top: -1px;
+      &:before {
+        @extend %extend_2;
+        border-bottom: 5px solid $color_ghost_approx;
+        top: -11px;
+      }
+      &:after {
+        @extend %extend_2;
+        border-bottom: 5px solid $color_romance_approx;
+        top: -10px;
+      }
+      &:hover {
+        &:before {
+          display: none;
+        }
+        &:after {
+          display: none;
+        }
+      }
+    }
+    &:last-child {
+      margin-bottom: -1px;
+    }
+    height: 52px;
+  }
+
+  a {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    margin: 0 -1px;
+    padding: 6px 40px 6px 10px;
+    color: $color_waterloo__approx;
+    font-weight: 500;
+    border: 1px solid transparent;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 3px;
+    span {
+      font-weight: normal;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: #FFFFFF !important;
+
+      border-color: $color_curious_blue_approx $color_mariner_approx $color_fun_blue_approx;
+      background-color: $color_curious_blue_approx;
+      background-image: linear-gradient(top, $color_picton_blue_approx, $color_curious_blue_approx);
+    }
+  }
+}

@@ -1,0 +1,87 @@
+/*
+ * Navbar
+ */
+
+/* Hiding the overall dark navbar color from the light area */
+.container-navbar {
+  padding-left: 0;
+}
+
+.navbar {
+
+  height: 69px !important;
+  background-color: #5F7076 !important;
+  border-color: red !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+// Vertically center ValuePad logo
+.navbar-brand {
+  padding-top: 10px;
+}
+
+// Light navbar in blue
+.nav-light {
+  height: 69px !important;
+  background-color: #17A1E5;
+  border-top: 2px solid #17A1E5;
+}
+
+// Light navbar in grey
+.nav-dark {
+  height: 69px !important;
+}
+
+// Main options item minimum width
+.nav-dark li {
+  min-width: 120px;
+  cursor: pointer;
+}
+
+// .active-section:after {
+//   border-bottom: 10px solid white !important;
+//   border-left: 8px solid transparent !important;
+//   border-right: 8px solid transparent !important;
+//   content: "" !important;
+//   height: 0 !important;
+//   position: absolute !important;
+//   right: 43% !important;
+//   bottom: -2px !important;
+// }
+
+// Ajust the extra padding caused by the navbar icons
+.nav-dark > li > a {
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.navbar .navbar-brand {
+  line-height: 30px;
+}
+
+@media (min-width: 768px) {
+  .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    margin-left: 0;
+  }
+}
+
+// App Bar
+
+.app-bar {
+  @media (max-width: 1270px) {
+    display: flex !important;
+  }
+}
+
+.vp-move-head-icon {
+  margin-left: 8px! important;
+  margin-top: 8px! important;
+}
+
+.invite-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}

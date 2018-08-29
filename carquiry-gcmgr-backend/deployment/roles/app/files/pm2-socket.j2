@@ -1,0 +1,30 @@
+{
+  "apps": [
+    {
+      "exec_mode": "fork_mode",
+      "script": "/var/www/gcmanager/dist/server/app.js",
+      "name": "gcmgr-0",
+      "node_args": ["--stack_size=8192", "--max-old-space-size=8192"],
+      "env": {
+        "PORT": 9000,
+        "NODE_ENV": "production",
+        "SOCKET_SERVER": "true"
+      },
+      "error_file": "/home/ubuntu/.pm2/logs/gcmgr-0.err.log",
+      "out_file": "/home/ubuntu/.pm2/logs/gcmgr-0.out.log"
+    },
+    {
+      "exec_mode": "fork_mode",
+      "script": "/var/www/gcmanager/dist/server/app.js",
+      "name": "gcmgr-1",
+      "node_args": ["--stack_size=8192", "--max-old-space-size=8192"],
+      "env": {
+        "PORT": 9001,
+        "NODE_ENV": "production",
+        "SOCKET_SERVER": "true"
+      },
+      "error_file": "/home/ubuntu/.pm2/logs/gcmgr-1.err.log",
+      "out_file": "/home/ubuntu/.pm2/logs/gcmgr-1.out.log"
+    }
+  ]
+}

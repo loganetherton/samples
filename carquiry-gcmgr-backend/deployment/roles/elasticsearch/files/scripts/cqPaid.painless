@@ -1,0 +1,36 @@
+if (doc['isTransaction'].value) {
+  return doc['transaction.cqPaid'].value;
+}
+
+if (doc['activityStatus'].value != null && doc['activityStatus'].value.equals('rejected')) {
+  return 0;
+}
+
+def verifiedBalance = doc['verifiedBalance']?.value;
+def claimedBalance = doc['balance'].value ?: 0;
+double actualBalance = verifiedBalance != null ? verifiedBalance : claimedBalance;
+def margin = doc['margin'].value ?: 0.03;
+def liquidationSoldFor = doc['liquidationSoldFor'].value ?: 0;
+def rateThisInventory = doc['liquidationRate'].value ?: 0;
+
+if (rateThisInventory <= 0 && actualBalance > 0) {
+  rateThisInventory = liquidationSoldFor / actualBalance;
+}
+
+// Double 0.9
+def rateAfterMargin = rateThisInventory > margin ? rateThisInventory - margin : 0;
+
+double cqPaid = actualBalance * rateAfterMargin;
+
+boolean denial = doc['adjustmentStatus'].value != null ? doc['adjustmentStatus'].value.equals('denial') : false;
+boolean chargeback = doc['adjustmentStatus'].value != null ? doc['adjustmentStatus'].value.equals('chargeback') : false;
+
+if (chargeback) {
+  cqPaid = claimedBalance * rateAfterMargin;
+}
+
+if (denial && actualBalance == 0) {
+  cqPaid = verifiedBalance * rateAfterMargin;
+}
+
+return Math.max(cqPaid, 0);

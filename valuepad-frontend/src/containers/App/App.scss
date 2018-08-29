@@ -1,0 +1,25 @@
+.app-container {
+  a:hover, a:focus {
+    color: #17A1E5;
+  }
+
+  a {
+    color: #000;
+  }
+
+  .children-container {
+    @media (min-width: 1270px) {
+      padding: 60px 15px 0;
+    }
+  }
+}
+
+footer {
+  a:hover, a:focus {
+    color: #17A1E5;
+  }
+
+  a {
+    color: #000;
+  }
+}

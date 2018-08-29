@@ -1,0 +1,97 @@
+.searchBar {
+  //colors
+  $color_black_haze_approx: #f7f7f7;
+  $color_cape_cod_approx: #404040;
+  $color_mariner_approx: #1e7ad3;
+  $color_scarpa_flow_approx: #555860;
+  $white: white;
+  $color_spun_pearl_approx: #a8acbc;
+  $color_french_gray_approx: #babdcc;
+  $color_gray_suit_approx: #c0c3d2;
+  $color_mystic_approx: #e5e7ed;
+  $color_alabaster_approx: #fcfcfc;
+  $color_cornflower_blue_approx: #66b1ee;
+  $color_picton_blue_90_approx: rgba(85, 168, 236, 0.9);
+  $color_mischka_approx: #cbcfe2;
+  $color_periwinkle_gray_approx: #c8cee7;
+  $color_ghost_approx: #c4c7d7;
+  $color_romance_approx: #fdfdfd;
+  $color_athens_gray_approx: #eceef4;
+  $black_10: rgba(0, 0, 0, 0.1);
+  $color_waterloo__approx: #808394;
+  $black_30: rgba(0, 0, 0, 0.3);
+  $color_curious_blue_approx: #2380dd;
+  $color_fun_blue_approx: #1a60aa;
+  $color_picton_blue_approx: #59aaf4;
+  $white_20: rgba(255, 255, 255, 0.2);
+  $black_8: rgba(0, 0, 0, 0.08);
+
+  //fonts
+  $font_0: HelveticaNeue;
+  $font_1: Helvetica Neue;
+  $font_2: Helvetica;
+  $font_3: Arial;
+  $font_4: sans-serif;
+
+  //urls
+  $url_0: url(http://cssdeck.com/uploads/media/items/5/5JuDgOa.png);
+  $url_1: url(http://cssdeck.com/uploads/media/items/7/7BNkBjd.png);
+
+  //@extend-elements
+  //original selectors
+  //.container, .main
+  %extend_1 {
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+  }
+
+  //original selectors
+  //.search .results li:first-child:before, .search .results li:first-child:after
+  %extend_2 {
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px outset transparent;
+  }
+
+  .search {
+    position: relative;
+    margin: 0 auto;
+    /*
+    input {
+      //height: 26px;
+      width: 100%;
+      //padding: 0 12px 0 25px;
+      background: $white $url_0 8px 6px no-repeat;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $color_spun_pearl_approx $color_french_gray_approx $color_gray_suit_approx;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 13px;
+      //Instead of the line below you could use @include box-sizing($bs)
+      box-sizing: border-box;
+      //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: inset 0 1px $color_mystic_approx, 0 1px 0 $color_alabaster_approx;
+      &:focus {
+        outline: none;
+        border-color: $color_cornflower_blue_approx;
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 0 0 2px $color_picton_blue_90_approx;
+        + .results {
+          display: block;
+        }
+      }
+    }
+    */
+  }
+
+  .lt-ie9 .search input {
+    line-height: 26px;
+  }
+}

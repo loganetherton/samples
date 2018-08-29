@@ -1,0 +1,17 @@
+---
+- name: Configure ES Server
+  hosts: es_servers_staging
+  remote_user: ubuntu
+  vars:
+    es_api_basic_auth_username: "gcmgr"
+    es_api_basic_auth_password: "**"
+    es_instance_name: "gcmgr"
+    es_api_host: "0.0.0.0"
+    es_config: {
+      network.host: "0.0.0.0",
+      transport.tcp.port: 9300
+    }
+    es_scripts: true
+    es_heap_size: 2g
+  roles:
+    - elasticsearch

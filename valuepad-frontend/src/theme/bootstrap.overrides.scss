@@ -1,0 +1,86 @@
+/**
+ * Override Bootstrap styles that you can't modify via variables here.
+ *
+ */
+@import './bootstrap-material-design/bootstrap-material-design';
+@import './bootstrap-material-design/ripples';
+@import './material-overrides';
+@import './global';
+// React datepicker
+@import './react-datepicker';
+// Multiselect
+@import './dropdown-select';
+// React datetimepicker
+@import './datetimepicker';
+
+/**
+ * Navbar
+ */
+
+.navbar {
+  background-color: #17A1E5 !important;
+  border-color: rgba(255, 255, 255, 0.50) !important;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+.label {
+  font-weight: normal;
+  border-radius: 6px;
+}
+
+.label-info {
+  background-color: #4dd0e1;
+  padding-top: 4px !important;
+  white-space: normal !important;
+  line-height: 15px !important;
+}
+
+.label-primary {
+  background-color: #17A1E5;
+}
+
+.label-success {
+  background-color: #4CC600;
+}
+
+.label-danger {
+  background-color: #F86354;
+}
+
+// Don't show yellow for webkit autocomplete
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+.btn-info {
+  background-color: #17A1E5 !important;
+  color: #FFFFFF !important;
+
+  & > * {
+    color: #FFFFFF !important;
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+}
+
+.btn-success {
+  background: #00CC00 !important;
+}
+
+// Required CSS
+&.required label:after, &.required-button:after {
+  color: #e32;
+  content: ' *';
+  display:inline;
+}
+
+// Prevent dropzone from taking up entire row
+.dropzone-inline {
+  display: inline;
+  & div {
+    display: inline;
+  }
+}

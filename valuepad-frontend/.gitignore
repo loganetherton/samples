@@ -1,0 +1,12 @@
+Vagrantfile
+.vagrant
+.happypack
+.idea/
+node_modules/
+bower_components/
+dist/
+*.iml
+webpack-assets.json
+webpack-stats.json
+npm-debug.log
+.DS_Store

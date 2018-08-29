@@ -1,0 +1,48 @@
+
+// Labels
+
+label, th > label {
+  opacity: 0.6;
+  color: #000 !important;
+}
+
+// Tabs
+
+.my-tab {
+  text-transform: uppercase;
+  font-weight: normal !important;
+  color: #000 !important;
+  background: #fff !important;
+  border: 1px solid #ccc !important;
+}
+
+.my-tab:hover,
+.my-tab:focus,
+.my-active-tab {
+  color: #17A1E5 !important;
+  background-color: #F4FBFE !important;
+  border: 1px solid #17A1E5 !important;
+}
+
+.my-tab-disabled {
+  color: lightgrey !important;
+  cursor: default !important;
+  &:hover {
+    color: lightgrey !important;
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+.no-shadow {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+// This is needed to avoid having the checkbox ripple effect cut in half inside tables
+//.first-td-checkbox {
+//  td:nth-child(1) {
+//    width: 60px !important;
+//  }
+//}

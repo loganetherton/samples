@@ -1,0 +1,51 @@
+---
+
+- sysctl:
+    name: net.core.somaxconn
+    value: 1024
+    state: present
+  become: True
+
+- sysctl:
+    name: fs.file-max
+    value: 100000
+    state: present
+  become: True
+
+- name: Disable transparent hugepage
+  shell: echo never > /sys/kernel/mm/transparent_hugepage/enabled
+
+- name: Disable transparent hugepage
+  lineinfile:
+    path: /etc/rc.local
+    line: 'echo never > /sys/kernel/mm/transparent_hugepage/enabled'
+  become: true
+
+- include: check_vars.yml
+
+- include: download.yml
+  tags:
+    - download
+
+- include: dependencies.yml
+  tags:
+    - install
+
+- include: install.yml
+  tags:
+    - install
+
+- include: rejson.yml
+
+- include: server.yml
+  when: not redis_sentinel
+  tags:
+    - config
+
+- include: sentinel.yml
+  when: redis_sentinel
+  tags:
+    - config
+
+- include: local_facts.yml
+  when: redis_local_facts|bool

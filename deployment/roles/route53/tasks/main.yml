@@ -1,0 +1,11 @@
+---
+- name: Get EC2 facts
+  ec2_facts:
+
+- name: Place application servers behind ELB
+  local_action:
+    module: ec2_elb
+    instance_id: "{{ ansible_ec2_instance_id }}"
+    ec2_elbs: "loganswalk"
+    state: 'present'
+    region: us-east-1

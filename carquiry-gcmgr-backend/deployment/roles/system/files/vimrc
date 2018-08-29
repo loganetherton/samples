@@ -1,0 +1,14 @@
+set incsearch " Search when typing
+set hlsearch " Highlight search results
+" colorscheme badwolf
+syntax enable " Syntax processing
+set tabstop=4 " 4 spaces per tab
+set softtabstop=4 " Number of spaces in tab when editing
+set expandtab " tabs become spaces
+set number " Show line numbers
+filetype indent on " load file-type specific indent files
+set wildmenu " visual autocomplete for the command menu
+set lazyredraw " Don't redraw unless you have to
+set showmatch " Highlight closing parenthesis, brackets, etc
+" Don't show highlights anymore when typing nl
+nnoremap nl :nohlsearch<CR>

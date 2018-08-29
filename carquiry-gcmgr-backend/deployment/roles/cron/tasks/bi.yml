@@ -1,0 +1,7 @@
+---
+
+- name: Upload run gcmgr defer script
+  copy: src=sync_bi.sh dest=/home/ubuntu/sync_bi.sh mode=0777
+
+- name: Run BI script
+  cron: name="run_bi" minute="0,15,30,45" job="/bin/bash /home/ubuntu/sync_bi.sh"

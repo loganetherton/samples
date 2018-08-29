@@ -1,0 +1,11 @@
+---
+
+- name: Basic deployment
+  include: deploy.yml
+
+- name: Install application dependencies
+  include: app_dependencies.yml
+
+- name: Run the application (production backend)
+  include: run_app_backend_prod.yml
+

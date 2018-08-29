@@ -1,0 +1,39 @@
+.customerList {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 48px;
+  padding-left: 16px
+}
+
+.iconFontSize {
+  font-size: 30px;
+}
+
+.textActive {
+  font-weight: normal;
+  color: #efefef
+}
+
+.inactive {
+  font-weight: normal;
+}
+
+.defaultName {
+  position: relative;
+  bottom: 10px;
+  font-size: 16px;
+}
+
+.type {
+  position: absolute;
+  left: 45px;
+  bottom: 3px;
+  font-size: 10px;
+}
+
+.name {
+  position: relative;
+  bottom: 16px;
+  font-size: 16px;
+}
